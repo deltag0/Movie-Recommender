@@ -1,0 +1,559 @@
+
+<html>
+    <style>
+        body{
+            background-color: #013A6B;
+            background-image: -webkit-linear-gradient(30deg, #fff 40%, #FF7F50 40%); 
+        }
+        @import url('https://fonts.googleapis.com/css?family=Inconsolata|Lato:300,400,700');
+        html, body, h1, h2, h3, h4, h5, h6, p, li, ol, ul, pre {
+        margin: 0;
+        padding: 0;
+        }
+        html, body { min-height: 100%; }
+
+        code {
+        background: #fff1;
+        font-family: 'Inconsolata', monospace;
+        padding: .2em .4em;
+        }
+
+        .preferences {
+        border-style: none;
+            background-color: #D3D3D3;
+            display:inline-block;
+            border: 1px solid grey;
+            padding: 2%;
+            border-radius: 20px;
+            align-items: center;
+                    padding-left: 1%;
+                }
+                textarea:focus, input:focus{
+            outline: none;
+        }
+
+        .big {
+            text-align: center;
+            margin-top: 5%;
+            font-size: 300%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        form {
+            margin: 60px auto;
+            border-radius: 25px;
+        }
+        form label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px;
+            margin-top: 8px;
+        }
+        .password {
+            margin-top: 2%;
+        }
+
+        #footer {
+        background-color: #246c;
+        background-image: linear-gradient(to bottom, transparent, #0009);
+        border-top: 1px solid #fff3;
+        box-shadow: inset 0 1px 0 #fff3, 0 0 32px #000;
+        overflow: hidden;
+        padding: 8px;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9001;
+        }
+        #footer a {
+        color: #85c6f6;
+        padding: 1em 0;
+        text-decoration: none;
+        }
+        #footer ul {
+        display: flex;
+        list-style: none;
+        justify-content: center;
+        font-size: 2em;
+        font-weight: 300;
+        }
+        #footer ul li {
+        padding: 0 .5em;
+        }
+
+        .links {
+        background-image: -webkit-linear-gradient(30deg, #FF7F50 24.6%, #fff 24.6%); 
+        font-size: 1.2em;
+        font-weight: 300;
+        }
+        .links > a {
+        color: #36454F;
+        padding: .60em;
+        text-align: center;
+        text-decoration: none;
+        transition: all .5s;
+        }
+        .links > a:hover {
+        background: #ffffff06;
+        color: #818589;
+        }
+        .links > .line {
+        background: #818589;
+        height: 1px;
+        pointer-events: none;
+        }
+
+        .container {
+            margin-left: 30%;
+            display: flex;
+            width: 40%;
+            max-width: 100%;
+            background-color: #A9A9A9;
+            margin-top: 2%;
+            border-radius: 25px;
+        }
+        .choice {
+            width: 100%;
+            margin: 2px;
+            outline: none;
+            padding: 8px;
+            border-radius: 9px;
+            border: 1px solid gray;
+        }
+        button {
+            border: none;
+            outline: none;
+            padding: 8px;
+            width: 100%;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: orange;
+        }
+        .small {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        }
+        .ac-tag {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #ddd;
+            margin: 3px;
+        }
+        .links {
+        display: grid;
+        grid-template-columns: repeat(var(--items), 1fr);
+        position: relative;
+        }
+        .links > .line {
+        opacity: 0;
+        transition: all .5s;
+        position: absolute;
+        bottom: 0;
+        left: var(--left, calc(100% / var(--items) * (var(--index) - 1)));
+        width: var(--width, calc(100% / var(--items)));
+        --index: 0;
+        }
+        .links > a:hover ~ .line {
+        opacity: 1;
+        }
+
+        .links > a:nth-of-type(1):hover ~ .line { --index: 1; }
+        .links > a:nth-of-type(2):hover ~ .line { --index: 2; }
+        .links > a:nth-of-type(3):hover ~ .line { --index: 3; }
+        .links > a:nth-of-type(4):hover ~ .line { --index: 4; }
+        .links > a:nth-of-type(5):hover ~ .line { --index: 5; }
+        .links > a:nth-of-type(6):hover ~ .line { --index: 6; }
+        .links > a:nth-of-type(7):hover ~ .line { --index: 7; }
+        .links > a:nth-of-type(8):hover ~ .line { --index: 8; }
+        .links > a:nth-of-type(9):hover ~ .line { --index: 9; }
+        .links > a:nth-of-type(10):hover ~ .line { --index: 10; }
+        .links > a:last-of-type:hover ~ .line { --index: var(--items); }
+        #profile {
+            text-align: right;
+            margin-left: 250%;
+        }
+        #nameRef {
+            visibility: hidden;
+        }
+    </style>
+
+    <head>
+
+    </head>
+    <body>
+
+        <header id="header">
+            <nav class="links" style="--items: 5;">
+              <a href="#" id="home">Home </a>
+              <a href="#">Movie Reccomender</a>
+              <a href="#" id="profile">Profile </a>
+              <span class="line"></span>
+            </nav>
+          </header>
+
+        <h1 class="big"> Find the perfect movie for you </h1>
+        
+        <div class="container">
+            <form method="post" action="/home/user/vic/find">
+                <h1 class="small">Enter your movie preferences </h1>
+                <div id="autocomplete">
+                    <div id="ac-tags"></div>
+                    <input type="text" id="autocomplete-input" class="choice" placeholder="Type something...">
+                    <div id="autocomplete-suggestions" style="display: none;"></div>
+                </div>
+                <button type="submit"> Login </button>
+                
+            </form>
+        </div>
+        <span id="nameRef"> {{{name}}} </span>
+        <script>
+            var link = document.getElementById("home");
+            link.href = "/home/user/userpage/" + document.getElementById("nameRef").textContent.trim()
+            var list = [    
+                {chapter: 'horror', unit: 'CATEGORIES'},
+                {chapter: 'action', unit: 'CATEGORIES'},
+                {chapter: 'drama', unit: 'CATEGORIES'},
+                {chapter: 'sports', unit: 'CATEGORIES'},
+                {chapter: 'crime', unit: 'CATEGORIES'},
+                {chapter: 'comedy', unit: 'CATEGORIES'},
+                {chapter: 'western', unit: 'CATEGORIES'},
+                {chapter: 'mystery', unit: 'CATEGORIES'},
+                {chapter: 'thriller', unit: 'CATEGORIES'},
+                {chapter: 'fantasy', unit: 'CATEGORIES'},
+                {chapter: 'musical', unit: 'CATEGORIES'},
+                {chapter: 'history', unit: 'CATEGORIES'},
+                {chapter: 'romance', unit: 'CATEGORIES'},
+                {chapter: 'documentary', unit: 'CATEGORIES'}
+            ];
+                                
+            var itemPropName = "chapter",
+                groupBy = "unit",
+                sortSuggestions = "asc", sortGroups = "asc",
+                matchingExp = 2,
+                highlight = true,
+                multipleSelections = true;
+
+            var inputArea = document.getElementById("autocomplete-input"),
+                suggestionsBox = document.getElementById("autocomplete-suggestions"),
+                len = list.length,
+                tagCont = document.getElementById("ac-tags"),
+                lastSuggestionIndex, suggestionElements, isNavigating = false, sBoxHeight = 0, selectedRegistry = [];
+
+                function getHighlightedValue(item, index, q) {
+                    if (typeof index === "number") {
+                        return item.slice(0, index) + '<b>' + item.slice(index, index + q.length) + '</b>' + item.slice(index + q.length)
+                    }
+                    else {
+                        var charArr = item.split("");
+                        for (var i = 0; i < index.length; i++) {
+                            charArr[index[i]] = '<b>' + charArr[index[i]] + '</b>';
+                        }
+                        return charArr.join("");
+                    }
+                }
+
+            var matchingFuncs = [
+                function(q, item) {
+                    return item.indexOf(q);
+                },
+
+                function(q, item) {
+                    return (item.indexOf(q) === 0) ? 0 : -1;
+                },
+
+                function characterSearch(q, item) {
+                    var index = 0, indexArr = [];
+                    for (var i = 0, len = q.length; i < len; i++) {
+                        index = item.indexOf(q.charAt(i), index);
+                        if (index === -1) {
+                            return -1;
+                        } else {
+                            indexArr.push(index);
+                            index++;
+                        }
+                    }
+                    return indexArr;
+                }
+            ];
+
+            var matchingFunc = matchingFuncs[matchingExp];
+
+            function sortSuggestionsInAsc(a, b) {
+                if (itemPropName) return a[itemPropName] > b[itemPropName];
+                return a > b;
+            }
+            function sortSuggestionsInDesc(a, b) {
+                if (itemPropName) return a[itemPropName] < b[itemPropName];
+                return a < b;
+            }
+
+            if (sortSuggestions) {
+                list.sort(sortSuggestions === "asc" ? sortSuggestionsInAsc : sortSuggestionsInDesc);
+            }
+
+            if (groupBy !== false) {
+                var groups = {};
+                for (var i = 0; i < len; i++) {
+                    g = getGroupName(list[i]);
+                    if (!groups[g]) {
+                        groups[g] = [];
+                    }
+                    groups[g].push(list[i]);
+                }
+
+                var keys = Object.keys(groups);
+                if (sortGroups) {
+                    keys.sort(sortGroups === "asc" ? function (a, b) { return a > b } : function (a, b) { return a < b });
+                }
+
+                list = [];
+                for (var k = 0; k < keys.length; k++) {
+                    list = list.concat(groups[keys[k]]);
+                }
+            }
+
+            var nativeList = [];
+            var listForHighlighting = [];
+            function normaliseList() {
+                for (var i = 0; i < len; i++) {
+                    nativeList.push(itemPropName ? list[i][itemPropName] : list[i]);
+                    if (highlight) {
+                        listForHighlighting.push(itemPropName ? list[i][itemPropName] : list[i])
+                    }
+                }
+
+            }
+            normaliseList();
+
+            function getGroupName(item) {
+                if (groupBy === 0) {
+                    return itemPropName ? item[itemPropName].charAt().toLowerCase() : item.charAt().toLowerCase();
+                }
+                else {
+                    return item[groupBy];
+                }
+            }
+
+            function processSuggestion(suggestion, highlightedValue) {
+                return highlightedValue;
+            }
+
+            function hideSuggestionsBox() {
+                suggestionsBox.innerHTML = "";
+                suggestionsBox.style.display = "none";
+            }
+
+            inputArea.oninput = function() {
+                if (isNavigating) {
+                    return;
+                }
+
+                var q = this.value,
+                suggestions = [];
+
+                if (q.length === 0) {
+                    hideSuggestionsBox();
+                    return;
+                }
+
+                suggestionsBox.innerHTML = "";
+
+                var c = '', index, highlightedValue, item, suggestionStr;
+                for (var i = 0; i < list.length; i++) {
+                    index = matchingFunc(q.toLowerCase(), nativeList[i].toLowerCase(), i);
+                    if (index !== -1) {
+                        if (groups) {
+                            _c = getGroupName(list[i]);
+                            if (c !== _c) {
+                                c = _c; 
+                                suggestions.push('<li class="group">' + c.toUpperCase() + '</li>')
+                            }
+                        }
+                        if (highlight) {
+                            item = itemPropName ? list[i][itemPropName] : list[i];
+                            highlightedValue = getHighlightedValue(item, index, q);
+                        }
+                        suggestionStr = processSuggestion(list[i], highlightedValue);
+                        if (multipleSelections) {
+                            suggestionStr = `<input type="checkbox" name="pref" id="${suggestionStr}"` + (selectedRegistry[i] ? ' checked' : '') + '> ' + suggestionStr;
+                        }
+                        suggestions.push('<li class="suggestion" data-index="' + i + '">' + suggestionStr + '</li>');
+                    }
+                }
+
+
+                if (suggestions.length === 0) {
+                    suggestionsBox.innerHTML = "<div>No results found!</div>";
+                }
+                else {
+                    suggestionsBox.innerHTML = '<ul>' + suggestions.join('') + '</ul>';
+                    suggestionElements = suggestionsBox.getElementsByClassName("suggestion");
+                    lastSuggestionIndex = suggestionElements.length - 1;
+                    sIndex = -1;
+                }
+
+                suggestionsBoxClicked = false;
+                suggestionsBox.style.display = "block";
+                suggestionHighlighted = -1;
+                sBoxHeight = suggestionsBox.clientHeight;
+                suggestionsBox.scrollTop = 0;
+            }
+
+            function getSuggestionText(suggestion) {
+                return itemPropName ? suggestion[itemPropName]: suggestion;
+            }
+
+            function selectSuggestion(suggestion) {
+                var i = Number(suggestion.getAttribute("data-index"));
+
+                if (multipleSelections) {
+                    if (!selectedRegistry[i]) {
+                        suggestion.childNodes[0].checked = true;
+
+                        var tag = document.createElement("input");
+                        tag.readOnly = true;
+                        tag.value = getSuggestionText(list[i]);
+                        tag.className = "preferences";
+                        tag.setAttribute("name", "preferences");
+                        tag.innerHTML = getSuggestionText(list[i]) + '<button class="ac-remove-btn">x</button>';
+                        tagCont.appendChild(tag);
+
+                        selectedRegistry[i] = tag;
+                    }
+
+                    else {
+                        suggestion.childNodes[0].checked = false;
+                        selectedRegistry[i].parentNode.removeChild(selectedRegistry[i]);
+                        selectedRegistry[i] = false;
+                    }
+                }
+
+                else {
+                    inputArea.value = getSuggestionText(list[i]);
+                    hideSuggestionsBox();
+                }
+            }
+
+            suggestionsBox.onclick = function (e) {
+                var t = e.target;
+                while (t !== suggestionsBox) {
+                    if (t.nodeName === "LI" && t.classList.contains("suggestion")) {
+                        selectSuggestion(t);
+                        return
+                    }
+                    t = t.parentNode;
+                }
+                
+            }
+
+            var suggestionsBoxClicked = false;
+            suggestionsBox.onmousedown = function(e) {
+                suggestionsBoxClicked = true;
+                e.preventDefault();
+                setTimeout(function() {
+                    suggestionsBoxClicked = false;
+                }, 0);
+            }
+
+            tagCont.onclick = function (e) {
+                var t = e.target;
+                while (t !== tagCont) {
+                    if (t.className === "ac-remove-btn") {
+                        t = t.parentNode;
+                        selectedRegistry[t.acSuggestionIndex] = false;
+                        t.parentNode.removeChild(t);
+                        return;
+                    }
+                    t = t.parentNode;
+                }
+            }
+
+            inputArea.onblur = function () {
+                if (!suggestionsBoxClicked) {
+                    suggestionsBox.style.display = "none";
+                }
+            }
+
+            var sIndex = -1;
+
+            function synchroniseSuggestionsBox() {
+                var sOffsetTop = suggestionElements[sIndex].offsetTop,
+                    sHeight = suggestionElements[sIndex].clientHeight;
+
+                if ((sOffsetTop + sHeight - suggestionsBox.scrollTop) > sBoxHeight) {
+                    suggestionsBox.scrollTop = sOffsetTop + sHeight - sBoxHeight
+                }
+                else if (suggestionsBox.scrollTop > sOffsetTop) {
+                    suggestionsBox.scrollTop = sOffsetTop
+                }
+            }
+
+            inputArea.onkeydown = function (e) {
+                isNavigating = false;
+
+                if (e.keyCode === 40) {
+                    e.preventDefault();
+                    isNavigating = true;
+                    if (sIndex === -1) {
+                        suggestionElements[++sIndex].classList.add("hl");
+                        suggestionsBox.scrollTop = 0
+                    }
+                    else if (sIndex === lastSuggestionIndex) {
+                        suggestionElements[sIndex].classList.remove("hl");
+                        sIndex = -1;
+                    }
+                    else {
+                        suggestionElements[sIndex].classList.remove("hl");
+                        suggestionElements[++sIndex].classList.add("hl");
+                    }
+                    if (sIndex !== -1) synchroniseSuggestionsBox();
+                }
+
+                else if (e.keyCode === 38) {
+                    e.preventDefault();
+                    isNavigating = true;
+                    if (sIndex === -1) {
+                        sIndex = lastSuggestionIndex;
+                        suggestionElements[sIndex].classList.add("hl");
+                    }
+                    else if (sIndex === 0) {
+                        suggestionElements[sIndex].classList.remove("hl");
+                        sIndex = -1;
+                        suggestionsBox.scrollTop = 0
+                    }
+                    else {
+                        suggestionElements[sIndex].classList.remove("hl");
+                        suggestionElements[--sIndex].classList.add("hl");
+                    }
+                    if (sIndex !== -1) synchroniseSuggestionsBox();
+                }
+
+                else if (e.keyCode === 13) {
+                    isNavigating = true;
+                    if (sIndex !== -1) {
+                        selectSuggestion(suggestionElements[sIndex]);
+                    }
+                }
+            }
+            var input = document.querySelector('.preferences'); // get the input element
+            input.addEventListener('.preferences', resizeInput); // bind the "resizeInput" callback on "input" event
+            resizeInput.call(input); // immediately call the function
+
+            function resizeInput() {
+                input.style.width = (input.value.length - 2)  + "ch";
+                input.style.paddingLeft = (2)  + "ch";
+                input.style.paddingRight = (2)  + "ch";
+            }
+        </script>
+    </body>
+
+</html>

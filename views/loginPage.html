@@ -1,0 +1,178 @@
+<html>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #d18c5a;
+            background-image: linear-gradient(225deg,#fc7a1d, red);
+        }
+        .login {
+            width: 400px;
+        }
+        #dot1 {
+            background-image: linear-gradient(225deg,#e24634, orange);
+            left: -7%;
+            top: -4%;
+            height: 28vw;
+            width: 28vw;
+        }
+        #dot2 {
+            background-image: linear-gradient(225deg, rgb(226, 114, 16), #e24634);
+            right: -7%;
+            bottom: 4%;
+            height: 20vw;
+            width: 20vw;
+        }
+        #dot3 {
+            background-image: linear-gradient(225deg,#e24634, orange);
+            right: 15%;
+            top: -15%;
+            height: 15vw;
+            width: 15vw;
+        }
+        #dot4 {
+            background-image: linear-gradient(225deg,#e24634, orange); 
+            background-color: #e24634;
+            left: 10%;
+            bottom: 1%;
+            height: 15vw;
+            width: 15vw;
+        }
+        #dot5 {
+            background-image: linear-gradient(225deg, rgb(226, 114, 16), #e24634);
+            left: 38%;
+            top: 0.5%;
+            height: 10vw;
+            width: 10vw;
+        }
+        #dot6 {
+            background-image: linear-gradient(225deg, rgb(226, 114, 16), #e24634);
+            right: 20%;
+            bottom: 1%;
+            height: 8vw;
+            width: 8vw;
+        }
+        .dot {
+            position: absolute;
+            height: 20vw;
+            width: 20vw;
+            background-color: #df8f55;
+            border-radius: 50%;
+            border: 2px solid orange;
+            display: inline-block;
+        }
+        hr {
+            border-top: 3px solid orange;
+        }
+        
+        a {
+        text-decoration: none;
+        color: orange;
+        }
+        p {
+            text-align: center;
+            margin: 10px;
+            font-size: 13px;
+        }
+        .signUp {
+            font-size: 12px;
+            margin-top: 16px;
+            text-align: right;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            display: flex;
+            max-width: 100%;
+            background: #fff;
+            border-radius: 15px;
+        }
+        form {
+            width: 250px;
+            margin: 60px auto;
+        }
+
+        form label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 5px;
+            margin-top: 8px;
+        }
+        input {
+            width: 100%;
+            margin: 2px;
+            outline: none;
+            padding: 8px;
+            border-radius: 9px;
+            border: 1px solid gray;
+        }
+        button {
+            border: none;
+            outline: none;
+            padding: 8px;
+            width: 100%;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 8px;
+            background: orange;
+        }
+        h1 {
+            margin: 20px;
+            text-align: center;
+            font-weight: bolder;
+            text-transform: uppercase;
+        }   
+
+    </style>
+    <head>
+
+
+    </head>
+
+    <body>
+        <span class="dot" id="dot1"> </span>
+        <span class="dot" id="dot2"></span>
+        <span class="dot" id="dot3"></span>
+        <span class="dot" id="dot4"></span>
+        <span class="dot" id="dot5"></span>
+        <span class="dot" id="dot6"></span>
+        <div class="zigzag"> </div>
+        <div class="box">
+            <div class="container">
+                <div class="login">
+                    <form method="post" action="/home/users/login">
+                        <h1> Login </h1>
+                        <hr>
+                        <label> Email <input type="text" class="email" name="email" id = "email" placeholder="example@gmail.com"> </label>
+                        <label> Password <input type="password" name="Password" class="Password" id = "Password" placeholder="Password"> </label>
+                        <button type="submit"> Login </button>
+                        <p class="singUp">
+                            <a href="/home/users/signup">Sign up instead?</a>
+                            <br>
+                            <a href="/home/users/createNewPassword">Forgot Password?</a>
+                          </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+
+
+
+</html>
