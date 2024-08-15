@@ -7,7 +7,7 @@ With plenty of search categories, users can easily find a movie suited to their 
 
 ## How It's Made:
 
-** Technology:** NodeJS, javascript, python, express, mongoDB, html, css
+**Technology:** NodeJS, javascript, python, express, mongoDB, html, css
 
 ## Lessons learned
 
