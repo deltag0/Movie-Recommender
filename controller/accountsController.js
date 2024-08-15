@@ -80,7 +80,7 @@ const find = asyncHandler (async (req, res) => {
     console.log('here')
     const spawn = require("child_process").spawn;
     const preferences = req.body.preferences;
-    const process = spawn('python.exe',["C:\\Users\\ioan1\\Movie\\scripts\\search.py", preferences]);
+    const process = spawn('python.exe',["search.py", preferences]);
     const email = req.cookies["email"];
     const user = await User.findOne({email});
 
